@@ -135,7 +135,7 @@ const SocialLinks = ({ isMounted }) => {
   const socialLinks = [
     { icon: <FaGithub size={24} />, url: 'https://github.com/yashahuja31', label: 'GitHub' },
     { icon: <FaLinkedin size={24} />, url: 'https://www.linkedin.com/in/yash-ahuja-610851274/', label: 'LinkedIn' },
-    { icon: <FaEnvelope size={24} />, url: 'mailto:yashahuja460@gmail.com', label: 'Email' },
+    { icon: <FaEnvelope size={24} />, url: 'mailto:ahujayash460@gmail.com', label: 'Email' },
     { icon: <FaTwitter size={24} />, url: 'https://x.com/ruineds0ul_', label: 'Twitter' }
   ];
 
@@ -199,8 +199,8 @@ const Contact = () => {
             <div className="flex flex-col gap-4">
               <div>
                 <p className="text-secondary">Email</p>
-                <a href="mailto:yashahuja2004@gmail.com" className="text-white hover:text-primary transition-all">
-                  yashahuja2004@gmail.com
+                <a href="mailto:ahgujayash460@gmail.com" className="text-white hover:text-primary transition-all">
+                  ahujayash460@gmail.com
                 </a>
               </div>
               <div>

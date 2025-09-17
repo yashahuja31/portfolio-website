@@ -25,7 +25,7 @@ export const Footer = () => {
           <div className="flex flex-col items-center md:items-end">
             <div className="flex gap-4 mb-4">
               <a 
-                href="https://linkedin.com/in/yashahuja" 
+                href="https://www.linkedin.com/in/yash-ahuja-610851274/s" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex justify-center items-center border border-secondary hover:border-neon transition-colors duration-300"
@@ -35,7 +35,7 @@ export const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="https://github.com/yashahuja" 
+                href="https://github.com/yashahuja31" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex justify-center items-center border border-secondary hover:border-neon transition-colors duration-300"
@@ -45,7 +45,7 @@ export const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="mailto:ahujayash450@gmail.com" 
+                href="mailto:ahujayash460@gmail.com" 
                 className="w-10 h-10 rounded-full flex justify-center items-center border border-secondary hover:border-neon transition-colors duration-300"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="text-white hover:text-neon" viewBox="0 0 16 16">
