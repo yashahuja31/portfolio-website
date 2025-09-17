@@ -133,10 +133,10 @@ const ContactForm = () => {
 
 const SocialLinks = ({ isMounted }) => {
   const socialLinks = [
-    { icon: <FaGithub size={24} />, url: 'https://github.com/yashahuja', label: 'GitHub' },
-    { icon: <FaLinkedin size={24} />, url: 'https://linkedin.com/in/yashahuja', label: 'LinkedIn' },
-    { icon: <FaEnvelope size={24} />, url: 'mailto:yashahuja2004@gmail.com', label: 'Email' },
-    { icon: <FaTwitter size={24} />, url: 'https://twitter.com/yashahuja', label: 'Twitter' }
+    { icon: <FaGithub size={24} />, url: 'https://github.com/yashahuja31', label: 'GitHub' },
+    { icon: <FaLinkedin size={24} />, url: 'https://www.linkedin.com/in/yash-ahuja-610851274/', label: 'LinkedIn' },
+    { icon: <FaEnvelope size={24} />, url: 'mailto:yashahuja460@gmail.com', label: 'Email' },
+    { icon: <FaTwitter size={24} />, url: 'https://x.com/ruineds0ul_', label: 'Twitter' }
   ];
 
   return (
