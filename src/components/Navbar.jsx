@@ -77,7 +77,7 @@ export const Navbar = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className='text-white text-[24px] font-serif font-bold cursor-pointer flex'>
+            <h1 className={`${scrolled ? 'text-primary-text' : 'text-white'} text-[24px] font-serif font-bold cursor-pointer flex`}>
               Yash&nbsp;<span className='neon-text'>Ahuja</span>
             </h1>
           </motion.div>
@@ -88,7 +88,11 @@ export const Navbar = () => {
             <li
               key={nav.id}
               className={`${
-                active === nav.title ? 'text-neon' : 'text-secondary'
+                active === nav.title 
+                  ? 'text-neon' 
+                  : scrolled 
+                    ? 'text-primary-text' 
+                    : 'text-secondary'
               } hover:text-neon text-[18px] font-medium cursor-pointer transition-colors duration-200`}
               onClick={() => setActive(nav.title)}
             >
