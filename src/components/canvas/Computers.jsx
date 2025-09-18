@@ -7,8 +7,17 @@ const Computers = ({ isMobile }) => {
   // In a real implementation, you would import an actual GLTF model
   // For now, we'll create a simple 3D object to represent a computer
   
+  const handleClick = () => {
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'Yash_Ahuja_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  
   return (
-    <mesh>
+    <mesh onClick={handleClick}>
       <hemisphereLight intensity={0.15} groundColor="black" />
       <spotLight
         position={[-20, 50, 10]}
@@ -24,13 +33,13 @@ const Computers = ({ isMobile }) => {
       <group position={[0, -3.25, 0]}>
         {/* Monitor */}
         <mesh position={[0, 2.5, 0]} castShadow receiveShadow>
-          <boxGeometry args={[3.5, 2, 0.2]} />
+          <boxGeometry args={[7, 4, 0.2]} />
           <meshStandardMaterial color="#151030" />
         </mesh>
         
         {/* Screen */}
         <mesh position={[0, 2.5, 0.11]} receiveShadow>
-          <boxGeometry args={[3.2, 1.8, 0.01]} />
+          <boxGeometry args={[6.4, 3.6, 0.01]} />
           <meshStandardMaterial color="#00FFFF" emissive="#00FFFF" emissiveIntensity={0.2} />
         </mesh>
         

@@ -54,6 +54,42 @@ export const projects = [
     challenges: "Implementing real-time multiplayer functionality while ensuring game state consistency across different clients was a significant challenge. We solved this by using Socket.io for reliable WebSocket connections and implementing a robust state synchronization mechanism.",
     source_code_link: "https://github.com/yashahuja31/chessy",
     live_demo_link: "https://chessy-game.netlify.app"
+  },
+  {
+    id: "hospitease",
+    title: "HospitEase",
+    description: "A hospital management system built with Python and MySQL that tracks and manages details of rooms, patients, doctors, and more.",
+    longDescription: "HospitEase (MediTrack) is a comprehensive hospital management platform that efficiently tracks and manages all aspects of hospital operations, from patient records to room availability and doctor schedules.",
+    image: "https://via.placeholder.com/800x600?text=HospitEase",
+    tags: ["Python", "MySQL", "Matplotlib"],
+    features: [
+      "Developed a platform that tracks and manages details of rooms, patients, doctors, etc.",
+      "Implemented database management using MySQL for efficient data storage and retrieval",
+      "Created data visualization components using Matplotlib for analytics and reporting",
+      "Currently developing a React.js frontend to provide online access for users"
+    ],
+    technologies: ["Python", "MySQL", "Matplotlib", "React.js (in progress)"],
+    challenges: "Managing complex relationships between different hospital entities while ensuring data integrity and security was challenging. We implemented a robust database schema with appropriate constraints and relationships to maintain data consistency.",
+    source_code_link: "https://github.com/yourusername/hospitease",
+    live_demo_link: ""
+  },
+  {
+    id: "schoolmate",
+    title: "SchoolMate",
+    description: "An intuitive platform for students and teachers to connect, communicate and collaborate effortlessly within educational institutions.",
+    longDescription: "SchoolMate is a comprehensive educational platform designed exclusively for internal use within specific university or school communities, ensuring privacy and relevance for all users.",
+    image: "https://via.placeholder.com/800x600?text=SchoolMate",
+    tags: ["JavaScript", "React.js", "Python", "MySQL"],
+    features: [
+      "Created an intuitive platform for students and teachers to connect, communicate and collaborate",
+      "Implemented backend functionality using Python with MySQL for database management",
+      "Designed with privacy in mind, exclusively for internal use within specific educational institutions",
+      "Currently developing the frontend using React.js for a modern, responsive user interface"
+    ],
+    technologies: ["JavaScript", "React.js", "Python", "MySQL"],
+    challenges: "Balancing the needs of different user types (students, teachers, administrators) while maintaining a cohesive and intuitive interface was a significant challenge. We addressed this through careful user research and iterative design processes.",
+    source_code_link: "https://github.com/yourusername/schoolmate",
+    live_demo_link: ""
   }
 ];
 
@@ -68,6 +104,7 @@ export const skills = [
       { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
       { name: "C", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
       { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+      { name: "C#", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
     ]
   },
   {
@@ -77,6 +114,7 @@ export const skills = [
       { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
       { name: "Express.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+      { name: ".NET", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" },
       { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" },
       { name: "Material UI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg" }
     ]

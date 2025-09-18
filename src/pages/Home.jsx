@@ -9,6 +9,24 @@ export const Home = () => {
 
   useEffect(() => {
     setIsMounted(true);
+    
+    // Add keyboard event listener for 'r' key to download resume
+    const handleKeyDown = (e) => {
+      if (e.key === 'r' || e.key === 'R') {
+        const link = document.createElement('a');
+        link.href = '/resume.pdf';
+        link.download = 'Yash_Ahuja_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   return (

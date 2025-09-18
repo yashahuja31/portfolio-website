@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 export const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  
+  const toggleTheme = () => {
+    setIsDarkTheme(!isDarkTheme);
+    document.documentElement.classList.toggle('light-theme');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +83,7 @@ export const Navbar = () => {
           </motion.div>
         </Link>
 
-        <ul className='list-none hidden sm:flex flex-row gap-10'>
+        <ul className='list-none hidden sm:flex flex-row gap-10 items-center'>
           {navLinks.map((nav) => (
             <li
               key={nav.id}
@@ -88,6 +95,24 @@ export const Navbar = () => {
               <Link to={nav.path}>{nav.title}</Link>
             </li>
           ))}
+          <li>
+            <motion.div 
+              className={`w-14 h-7 rounded-full p-1 flex items-center cursor-grab active:cursor-grabbing ${isDarkTheme ? 'bg-gray-700' : 'bg-yellow-300'}`}
+              onClick={toggleTheme}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.1}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.div 
+                className={`w-5 h-5 rounded-full flex items-center justify-center ${isDarkTheme ? 'bg-white text-gray-800' : 'bg-yellow-500 text-white'}`}
+                animate={{ x: isDarkTheme ? 0 : 28 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              >
+                {isDarkTheme ? <FaMoon size={12} /> : <FaSun size={12} />}
+              </motion.div>
+            </motion.div>
+          </li>
         </ul>
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
@@ -126,6 +151,28 @@ export const Navbar = () => {
                   <Link to={nav.path}>{nav.title}</Link>
                 </li>
               ))}
+              <li className="flex items-center mt-2">
+                <span className="text-secondary mr-2 text-[14px]">Theme:</span>
+                <motion.div 
+                  className={`w-12 h-6 rounded-full p-1 flex items-center cursor-grab active:cursor-grabbing ${isDarkTheme ? 'bg-gray-700' : 'bg-yellow-300'}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleTheme();
+                  }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.1}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div 
+                    className={`w-4 h-4 rounded-full flex items-center justify-center ${isDarkTheme ? 'bg-white text-gray-800' : 'bg-yellow-500 text-white'}`}
+                    animate={{ x: isDarkTheme ? 0 : 24 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  >
+                    {isDarkTheme ? <FaMoon size={10} /> : <FaSun size={10} />}
+                  </motion.div>
+                </motion.div>
+              </li>
             </ul>
           </motion.div>
         </div>

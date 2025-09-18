@@ -40,6 +40,13 @@ const About = () => {
 
   const activities = [
     {
+      title: "Web Development Intern",
+      organization: "Tech Ad Solution",
+      date: "Jun 2023 - Aug 2023",
+      description: "Developed responsive web applications and implemented frontend solutions using modern JavaScript frameworks and libraries.",
+      icon: "💼",
+    },
+    {
       title: "Technical Team Member",
       organization: "Google Developer Student Club (GDSC), ADGIPS",
       date: "Oct 2023 - Present",
