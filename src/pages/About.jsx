@@ -41,10 +41,17 @@ const About = () => {
   const activities = [
     {
       title: "Web Development Intern",
-      organization: "Tech Ad Solution",
-      date: "Jun 2023 - Aug 2023",
-      description: "Developed responsive web applications and implemented frontend solutions using modern JavaScript frameworks and libraries.",
+      organization: "Tech AD Solution",
+      date: "Jun 2025 - Aug 2025",
+      description: "Developed responsive web applications and implemented full-stack solutions using modern JavaScript frameworks and libraries.",
       icon: "💼",
+    },
+    {
+      title: "Member",
+      organization: "Robogyan Society",
+      date: "Dec 2023 - Present",
+      description: "Actively involved in technical projects, applying engineering principles.",
+      icon: "🤖",
     },
     {
       title: "Technical Team Member",
@@ -61,12 +68,12 @@ const About = () => {
       icon: "🚀",
     },
     {
-      title: "Member",
-      organization: "Robogyan Society",
-      date: "Dec 2023 - Present",
-      description: "Actively involved in technical projects, applying engineering principles.",
-      icon: "🤖",
-    }
+      title: "Captain",
+      organization: "Indian School Badminton Team",
+      date: "July 2022 - May 2023",
+      description: "Hosted the School's annual Badminton competion, reached semi-finals in the Zonals Badminton Tournament.",
+      icon: "🏸",
+    },
   ];
 
   return (

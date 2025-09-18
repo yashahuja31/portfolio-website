@@ -21,7 +21,7 @@ export const projects = [
   {
     id: "readerreviews",
     title: "ReaderReviews Hub",
-    description: "A MERN stack application managing over 1000 book reviews, featuring secure user authentication and high-performance RESTful APIs for efficient data retrieval.",
+    description: "A MERN stack application managing over 1000+ book reviews, featuring secure user authentication and high-performance RESTful APIs for efficient data retrieval.",
     longDescription: "ReaderReviews Hub is a comprehensive platform for book enthusiasts to discover, review, and discuss their favorite books. The application features a robust review system, personalized recommendations, and community engagement tools.",
     image: "https://lh3.googleusercontent.com/gg-dl/AJfQ9KRvAjqZiOSRJ2KEJzzuSNbDBWplcLcYZ22JykKTsMbWT6TeLQFWuSmfmuBxeFsu3CVwL-XqShnRR8tcFvNpYsCZmO7f5t7xjo4USPiKVNiStuEk43XLeg9eExkIpaD8J2aDijxP7dIWNu1-bwazVqv84qEZDzFQsLVwueHAQMIrw3Sd=s1024?text=ReaderReviews",
     tags: ["MongoDB", "Express.js", "React", "Node.js", "JWT"],
@@ -34,8 +34,8 @@ export const projects = [
     ],
     technologies: ["MongoDB", "Express.js", "React", "Node.js", "JWT", "Bcrypt", "Axios"],
     challenges: "Managing complex data relationships between users, books, and reviews while ensuring optimal database performance was challenging. We implemented efficient indexing strategies and query optimization to maintain fast response times even with large datasets.",
-    source_code_link: "https://github.com/yashahuja31/readerreviews",
-    live_demo_link: "https://readerreviews.herokuapp.com"
+    source_code_link: "https://github.com/yashahuja31/ReaderReviews",
+    live_demo_link: "https://reader-reviews.vercel.app/"
   },
   {
     id: "chessy",
@@ -53,7 +53,7 @@ export const projects = [
     technologies: ["HTML", "TailwindCSS", "JavaScript", "chess.js", "stockfish.js", "Socket.io"],
     challenges: "Implementing real-time multiplayer functionality while ensuring game state consistency across different clients was a significant challenge. We solved this by using Socket.io for reliable WebSocket connections and implementing a robust state synchronization mechanism.",
     source_code_link: "https://github.com/yashahuja31/chessy",
-    live_demo_link: "https://chessy-game.netlify.app"
+    live_demo_link: "https://chessy-theta.vercel.app/"
   },
   {
     id: "hospitease",
@@ -70,7 +70,7 @@ export const projects = [
     ],
     technologies: ["Python", "MySQL", "Matplotlib", "React.js (in progress)"],
     challenges: "Managing complex relationships between different hospital entities while ensuring data integrity and security was challenging. We implemented a robust database schema with appropriate constraints and relationships to maintain data consistency.",
-    source_code_link: "https://github.com/yourusername/hospitease",
+    source_code_link: "https://github.com/yashahuja31/hospitease",
     live_demo_link: ""
   },
   {
@@ -88,7 +88,7 @@ export const projects = [
     ],
     technologies: ["JavaScript", "React.js", "Python", "MySQL"],
     challenges: "Balancing the needs of different user types (students, teachers, administrators) while maintaining a cohesive and intuitive interface was a significant challenge. We addressed this through careful user research and iterative design processes.",
-    source_code_link: "https://github.com/yourusername/schoolmate",
+    source_code_link: "https://github.com/yashahuja31/schoolmate",
     live_demo_link: ""
   }
 ];
