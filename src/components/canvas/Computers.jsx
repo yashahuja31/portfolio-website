@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Preload } from "@react-three/drei";
-import { FaDownload } from "react-icons/fa";
+import { OrbitControls, Preload, Html } from "@react-three/drei";
+import { FaDownload, FaArrowUp } from "react-icons/fa";
 import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
@@ -18,6 +18,21 @@ const Computers = ({ isMobile }) => {
     link.click();
     document.body.removeChild(link);
   };
+  
+  // Add keyboard event listener for 'r' key
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'r' || event.key === 'R') {
+        handleClick();
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
 
   return (
     <group>
@@ -34,9 +49,9 @@ const Computers = ({ isMobile }) => {
       
       {/* Simple computer representation instead of 3D model */}
       <group
-        scale={isMobile ? 0.7 : 0.75}
+        scale={isMobile ? 1.4 : 1.5} /* Doubled the size from 0.7/0.75 to 1.4/1.5 */
         position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
-        rotation={[-0.01, -0.2, -0.1]}
+        rotation={[0, 0, 0]}
       >
         {/* Monitor */}
         <mesh position={[0, 2.5, 0]} castShadow receiveShadow>
@@ -68,12 +83,12 @@ const Computers = ({ isMobile }) => {
           onPointerOver={() => setShowTooltip(true)}
           onPointerOut={() => setShowTooltip(false)}
         >
-          {/* Arrow Down Icon */}
+          {/* Arrow Up Icon (for download) */}
           <mesh position={[0, 0, 0]} castShadow receiveShadow>
             <cylinderGeometry args={[0.5, 0.5, 0.1, 32]} />
             <meshStandardMaterial color="#4CAF50" emissive="#4CAF50" emissiveIntensity={0.5} />
           </mesh>
-          <mesh position={[0, -0.5, 0]} castShadow receiveShadow>
+          <mesh position={[0, 0.5, 0]} castShadow receiveShadow> {/* Changed position from -0.5 to 0.5 to reverse direction */}
             <coneGeometry args={[0.5, 1, 32]} />
             <meshStandardMaterial color="#4CAF50" emissive="#4CAF50" emissiveIntensity={0.5} />
           </mesh>
@@ -89,6 +104,20 @@ const Computers = ({ isMobile }) => {
                 <boxGeometry args={[5.8, 0.6, 0.01]} />
                 <meshStandardMaterial color="#FFFFFF" emissive="#FFFFFF" emissiveIntensity={0.8} />
               </mesh>
+              <Html position={[0, 0, 0.2]} center>
+                <div style={{ 
+                  color: '#000', 
+                  background: 'transparent',
+                  padding: '8px',
+                  width: '300px',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  whiteSpace: 'nowrap'
+                }}>
+                  Press 'r' key or click the icon to download resume
+                </div>
+              </Html>
             </group>
           )}
         </group>
@@ -105,19 +134,19 @@ const Computers = ({ isMobile }) => {
           <meshStandardMaterial color="#151030" />
         </mesh>
         
-        {/* Download Icon */}
+        {/* Download Icon - centered on screen */}
         <group 
           position={[0, 2.5, 0.12]} 
           onClick={handleClick}
           onPointerOver={() => setShowTooltip(true)}
           onPointerOut={() => setShowTooltip(false)}
         >
-          {/* Arrow Down Icon */}
+          {/* Arrow Up Icon (for download) */}
           <mesh position={[0, 0, 0]} castShadow receiveShadow>
             <cylinderGeometry args={[0.5, 0.5, 0.1, 32]} />
             <meshStandardMaterial color="#4CAF50" emissive="#4CAF50" emissiveIntensity={0.5} />
           </mesh>
-          <mesh position={[0, -0.5, 0]} castShadow receiveShadow>
+          <mesh position={[0, 0.5, 0]} castShadow receiveShadow> {/* Changed position from -0.5 to 0.5 to reverse direction */}
             <coneGeometry args={[0.5, 1, 32]} />
             <meshStandardMaterial color="#4CAF50" emissive="#4CAF50" emissiveIntensity={0.5} />
           </mesh>
@@ -133,6 +162,20 @@ const Computers = ({ isMobile }) => {
                 <boxGeometry args={[5.8, 0.6, 0.01]} />
                 <meshStandardMaterial color="#FFFFFF" emissive="#FFFFFF" emissiveIntensity={0.8} />
               </mesh>
+              <Html position={[0, 0, 0.2]} center>
+                <div style={{ 
+                  color: '#000', 
+                  background: 'transparent',
+                  padding: '8px',
+                  width: '300px',
+                  textAlign: 'center',
+                  fontWeight: 'bold',
+                  fontSize: '14px',
+                  whiteSpace: 'nowrap'
+                }}>
+                  Press 'r' key or click the icon to download resume
+                </div>
+              </Html>
             </group>
           )}
         </group>
