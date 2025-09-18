@@ -38,10 +38,30 @@ const Computers = ({ isMobile }) => {
         </mesh>
         
         {/* Screen */}
-        <mesh position={[0, 2.5, 0.11]} receiveShadow>
+        <mesh position={[0, 2.5, 0.11]} receiveShadow onClick={handleClick}>
           <boxGeometry args={[6.4, 3.6, 0.01]} />
           <meshStandardMaterial color="#00FFFF" emissive="#00FFFF" emissiveIntensity={0.2} />
         </mesh>
+        
+        {/* Resume Icon */}
+        <group position={[0, 2.5, 0.12]} onClick={handleClick}>
+          {/* Document Icon */}
+          <mesh position={[0, 0, 0]} castShadow receiveShadow>
+            <boxGeometry args={[1, 1.2, 0.01]} />
+            <meshStandardMaterial color="#ff0000" emissive="#ff0000" emissiveIntensity={0.5} />
+          </mesh>
+          {/* Text */}
+          <mesh position={[0, -1.2, 0]} castShadow receiveShadow>
+            <boxGeometry args={[2, 0.4, 0.01]} />
+            <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.8} />
+          </mesh>
+          
+          {/* Hint Text */}
+          <mesh position={[0, 0.8, 0]} castShadow receiveShadow>
+            <boxGeometry args={[3, 0.3, 0.01]} />
+            <meshStandardMaterial color="#ffff00" emissive="#ffff00" emissiveIntensity={0.8} />
+          </mesh>
+        </group>
         
         {/* Stand */}
         <mesh position={[0, 1.25, 0]} castShadow receiveShadow>

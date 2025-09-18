@@ -52,6 +52,14 @@ export const Home = () => {
             Full-stack Developer with expertise in <br className="sm:block hidden" />
             React.js, Node.js, and AI integration.
           </p>
+          
+          <div className="mt-4 text-secondary text-[16px] max-w-3xl">
+            <p className="mb-2">🎓 Computer Science undergraduate with strong problem-solving skills</p>
+            <p className="mb-2">💼 Web Development Intern at Tech Ad Solution</p>
+            <p className="mb-2">🚀 Passionate about building innovative web applications</p>
+            <p className="mb-2">🔍 Experienced in full-stack development and AI integration</p>
+            <p>📱 Click on the computer screen or press 'R' key to download my resume</p>
+          </div>
 
           <div className="mt-10 flex flex-wrap gap-5">
             <Link to="/projects">
