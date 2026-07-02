@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Yash Ahuja — Software Development Engineer · Full-Stack</title>
+<meta name="description" content="Portfolio of Yash Ahuja, a Computer Science Engineering student and full-stack developer building scalable web and ML systems." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-theme="dark">
+
+<!-- ambient starfield canvas, sits behind everything -->
+<canvas id="bg-canvas"></canvas>
+<div id="grain"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <a href="#home" class="nav__mark" aria-label="Yash Ahuja — home">
+    <span class="nav__mark-glyph">Y</span><span class="nav__mark-dot">·</span>
+  </a>
+
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#about"><span class="nav__index">01</span>About</a>
+    <a href="#experience"><span class="nav__index">02</span>Log</a>
+    <a href="#skills"><span class="nav__index">03</span>Systems</a>
+    <a href="#projects"><span class="nav__index">04</span>Missions</a>
+    <a href="#contact"><span class="nav__index">05</span>Contact</a>
+  </nav>
+
+  <div class="nav__actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Switch between dark space and daylight nebula theme" aria-pressed="false">
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__thumb"></span>
+      </span>
+      <span class="theme-toggle__label" id="theme-toggle-label">Night sky</span>
+    </button>
+    <button class="nav__burger" id="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a href="#about">About</a>
+  <a href="#experience">Mission Log</a>
+  <a href="#skills">Systems</a>
+  <a href="#projects">Missions</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section id="home" class="hero">
+    <div class="hero__content reveal">
+      <p class="eyebrow">Software Development Engineer · Full-Stack Developer</p>
+      <h1 class="hero__title">
+        Yash Ahuja
+      </h1>
+      <p class="hero__tagline">
+        Computer Science Engineering student building full-stack and
+        machine-learning systems — from a MERN content platform to an
+        enterprise .NET system serving 1,000+ students. Currently at GGSIPU,
+        New Delhi, GPA 8.79/10, and open to SDE Intern / Software Engineer roles.
+      </p>
+      <div class="hero__ctas">
+        <a href="#projects" class="btn btn--primary">
+          <span>View missions</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="assets/Yash_Ahuja_Resume.pdf" class="btn btn--ghost" download>
+          <span>Download résumé</span>
+        </a>
+      </div>
+
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-num">GGSIPU · 8.79 GPA</span>
+          <span class="hero__stat-label">B.Tech · Computer Science Engineering</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">2 internships</span>
+          <span class="hero__stat-label">Sterco Digitex (.NET) &amp; Tech-AD (MERN)</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-num">Open to work</span>
+          <span class="hero__stat-label">SDE Intern / Software Engineer</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__astronaut" aria-hidden="true">
+      <canvas id="astronaut-canvas"></canvas>
+    </div>
+
+    <button class="scroll-cue" id="scroll-cue" aria-label="Scroll to about section">
+      <span>Descend</span>
+      <span class="scroll-cue__line"></span>
+    </button>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section about">
+    <div class="section__head reveal">
+      <p class="section__eyebrow">01 / Flight profile</p>
+      <h2 class="section__title">About</h2>
+    </div>
+
+    <div class="about__grid">
+      <p class="about__lead reveal">
+        I'm a Computer Science Engineering student at Guru Gobind Singh
+        Indraprastha University who likes the unglamorous parts of software:
+        the slow query that's costing three seconds nobody noticed, the
+        schema that needs to hold up under 1,000+ real records, the auth
+        flow that has to be actually secure, not just present.
+      </p>
+      <div class="about__cards">
+        <div class="about__card reveal">
+          <h3>Full-stack across two stacks</h3>
+          <p>Enterprise .NET + MS SQL Server at Sterco Digitex, and MERN
+             (MongoDB, Express, React, Node) at Tech-AD India Network
+             Solutions — comfortable moving between both.</p>
+        </div>
+        <div class="about__card reveal">
+          <h3>ML that ships, not just notebooks</h3>
+          <p>Built InningInsights, an end-to-end IPL score/winner prediction
+             app — 70%+ model accuracy, containerised with Docker, deployed
+             through a CI/CD pipeline, not a one-off notebook.</p>
+        </div>
+        <div class="about__card reveal">
+          <h3>Optimization mindset</h3>
+          <p>At Sterco Digitex I cut average SQL response time by ~15% and
+             raised application efficiency by 20% with role-based access
+             control — measured, not assumed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE / MISSION LOG ============ -->
+  <section id="experience" class="section experience">
+    <div class="section__head reveal">
+      <p class="section__eyebrow">02 / Chronology</p>
+      <h2 class="section__title">Mission log</h2>
+      <p class="section__sub">A running log, most recent transmission first.</p>
+    </div>
+
+    <ol class="log">
+      <li class="log__entry reveal">
+        <div class="log__marker"><span class="log__dot"></span><span class="log__line"></span></div>
+        <div class="log__body">
+          <p class="log__date">In progress</p>
+          <h3 class="log__title">Interview cycle — Josh Technology Group</h3>
+          <p class="log__desc">
+            Preparing across data structures &amp; algorithms, OOP, SQL, and
+            system fundamentals for an upcoming interview loop.
+          </p>
+        </div>
+      </li>
+
+      <li class="log__entry reveal">
+        <div class="log__marker"><span class="log__dot"></span><span class="log__line"></span></div>
+        <div class="log__body">
+          <p class="log__date">Applied</p>
+          <h3 class="log__title">HARMAN Lifestyle — Embedded Systems / ML Inference Intern</h3>
+          <p class="log__desc">
+            Applied with a résumé built around the ML pipeline and
+            optimization work from InningInsights and Sterco Digitex.
+          </p>
+        </div>
+      </li>
+
+      <li class="log__entry reveal">
+        <div class="log__marker"><span class="log__dot"></span><span class="log__line"></span></div>
+        <div class="log__body">
+          <p class="log__date">Nov 2025 – Feb 2026</p>
+          <h3 class="log__title">Software Developer Intern — Sterco Digitex Pvt. Ltd., Noida</h3>
+          <p class="log__desc">
+            Built a College Data Management System (.NET + MS SQL Server)
+            for 1,000+ students, designing the full schema with referential
+            integrity and normalization. Optimized complex SQL queries,
+            cutting average response time by ~15%, and delivered full CRUD
+            for attendance, courses, grades, and admin records. Shipped
+            role-based access control (Admin, Faculty, Students) on an MVC
+            architecture, lifting application efficiency by 20%.
+          </p>
+        </div>
+      </li>
+
+      <li class="log__entry reveal">
+        <div class="log__marker"><span class="log__dot"></span><span class="log__line"></span></div>
+        <div class="log__body">
+          <p class="log__date">Jun 2025 – Aug 2025</p>
+          <h3 class="log__title">Web Developer Intern — Tech-AD India Network Solutions</h3>
+          <p class="log__desc">
+            Maintained and enhanced the company's MERN stack site: dynamic
+            UI components, RESTful APIs, and live database updates.
+            Improved performance and page-load responsiveness through
+            targeted refactoring and query optimization, and resolved
+            production bugs via Git branching workflows.
+          </p>
+        </div>
+      </li>
+
+      <li class="log__entry reveal">
+        <div class="log__marker"><span class="log__dot"></span><span class="log__line"></span></div>
+        <div class="log__body">
+          <p class="log__date">2023 – Present</p>
+          <h3 class="log__title">B.Tech, Computer Science Engineering — GGSIPU</h3>
+          <p class="log__desc">
+            GPA 8.79/10. Core Technical Team Member at Google Developer
+            Student Club (GDSC); Pre-Final Round participant, Smart India
+            Hackathon 2023; active member, Robogyan Society.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ SKILLS — 3D ORBITAL SYSTEM ============ -->
+  <section id="skills" class="section skills">
+    <div class="section__head reveal">
+      <p class="section__eyebrow">03 / Systems check</p>
+      <h2 class="section__title">Tech stack, in orbit</h2>
+      <p class="section__sub">
+        Drag to rotate. Inner orbit is core languages, outer orbits move
+        through frameworks, databases, and tools. Tap a node for detail.
+      </p>
+    </div>
+
+    <div class="skills__stage reveal">
+      <canvas id="skills-canvas"></canvas>
+      <div class="skills__legend">
+        <div class="skills__legend-item"><span class="dot dot--lang"></span>Languages</div>
+        <div class="skills__legend-item"><span class="dot dot--frame"></span>Frameworks</div>
+        <div class="skills__legend-item"><span class="dot dot--db"></span>Databases</div>
+        <div class="skills__legend-item"><span class="dot dot--tool"></span>Tools &amp; concepts</div>
+      </div>
+      <div class="skills__readout" id="skills-readout">
+        <p class="skills__readout-hint">Select a node to inspect it</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section projects">
+    <div class="section__head reveal">
+      <p class="section__eyebrow">04 / Deployed missions</p>
+      <h2 class="section__title">Projects</h2>
+    </div>
+
+    <div class="projects__grid">
+
+      <article class="project-card reveal">
+        <div class="project-card__viz"><canvas></canvas></div>
+        <div class="project-card__body">
+          <p class="project-card__eyebrow">Full-stack + ML pipeline</p>
+          <h3 class="project-card__title">InningInsights</h3>
+          <p class="project-card__desc">
+            Full-stack IPL score/winner prediction app with 70%+ ML
+            accuracy. Responsive frontend with secure JWT auth and
+            real-time match stats, scalable backend APIs with integrated
+            ML model inference, containerised with Docker behind a CI/CD
+            pipeline for reliable deployment.
+          </p>
+          <ul class="project-card__tags">
+            <li>Next.js</li><li>Node.js</li><li>Python (ML)</li><li>PostgreSQL</li><li>Docker</li>
+          </ul>
+          <div class="project-card__links">
+            <a href="#" class="link-arrow">Repository <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-card__viz"><canvas></canvas></div>
+        <div class="project-card__body">
+          <p class="project-card__eyebrow">Enterprise system</p>
+          <h3 class="project-card__title">College Data Management System</h3>
+          <p class="project-card__desc">
+            Built at Sterco Digitex for 1,000+ students: a normalized MS SQL
+            Server schema with referential integrity, full CRUD for
+            attendance, courses, grades, and admin records, and role-based
+            access control across Admin, Faculty, and Student roles on an
+            MVC architecture.
+          </p>
+          <ul class="project-card__tags">
+            <li>C# / .NET</li><li>MS SQL Server</li><li>MVC</li><li>RBAC</li>
+          </ul>
+          <div class="project-card__links">
+            <a href="#" class="link-arrow">Write-up <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-card__viz"><canvas></canvas></div>
+        <div class="project-card__body">
+          <p class="project-card__eyebrow">MERN application</p>
+          <h3 class="project-card__title">ReaderReviews Hub</h3>
+          <p class="project-card__desc">
+            MERN stack application managing 1,000+ book reviews at scale.
+            Secure auth with JWT and BcryptJS password hashing, plus
+            high-performance REST APIs with automated rating aggregation
+            and pagination for growing user data.
+          </p>
+          <ul class="project-card__tags">
+            <li>MongoDB</li><li>Express.js</li><li>React</li><li>JWT</li>
+          </ul>
+          <div class="project-card__links">
+            <a href="#" class="link-arrow">Repository <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-card__viz"><canvas></canvas></div>
+        <div class="project-card__body">
+          <p class="project-card__eyebrow">Real-time multiplayer</p>
+          <h3 class="project-card__title">Chessy</h3>
+          <p class="project-card__desc">
+            Real-time multiplayer chess web app with live gameplay over
+            Socket.io and an integrated Stockfish engine for in-depth game
+            analysis. Fully responsive UI, with game-state synchronization
+            and move validation handled via chess.js.
+          </p>
+          <ul class="project-card__tags">
+            <li>Socket.io</li><li>chess.js</li><li>Stockfish.js</li><li>Tailwind CSS</li>
+          </ul>
+          <div class="project-card__links">
+            <a href="#" class="link-arrow">Repository <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+            <a href="#" class="link-arrow">Live <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section contact">
+    <div class="contact__panel reveal">
+      <p class="section__eyebrow">05 / Open channel</p>
+      <h2 class="contact__title">Let's talk.</h2>
+      <p class="contact__desc">
+        Open to SDE Intern and Software Engineer roles. The fastest way to
+        reach me is email or phone — I read and answer every message.
+      </p>
+      <a href="mailto:ahujayash460@gmail.com" class="contact__email">
+        ahujayash460@gmail.com
+      </a>
+      <div class="contact__links">
+        <a href="tel:+919650083563">+91 96500 83563</a>
+        <a href="#" target="_blank" rel="noopener">GitHub <!-- EDIT_ME: add your GitHub URL --></a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn <!-- EDIT_ME: add your LinkedIn URL --></a>
+        <a href="assets/Yash_Ahuja_Resume.pdf" download>Résumé</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Designed &amp; built by Yash Ahuja — rendered in Three.js. © <span id="year"></span></p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
