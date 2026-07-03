@@ -508,6 +508,69 @@ a:focus-visible, button:focus-visible {
 }
 
 /* =========================================================
+   CUSTOM CURSOR
+   ========================================================= */
+@media (pointer: fine) {
+  .has-custom-cursor,
+  .has-custom-cursor * {
+    cursor: none;
+  }
+  /* let the browser's native grab/grabbing cursor show through on the
+     two draggable 3D canvases — that inline style is set from JS */
+  .has-custom-cursor #skills-canvas,
+  .has-custom-cursor #astronaut-canvas {
+    cursor: auto;
+  }
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity .25s var(--ease);
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--coral);
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--violet-soft);
+  transition: width .28s var(--ease), height .28s var(--ease),
+              border-color .28s var(--ease), background-color .28s var(--ease),
+              border-style .28s var(--ease), opacity .25s var(--ease);
+}
+
+.cursor-ring--hover {
+  width: 56px;
+  height: 56px;
+  border-color: var(--coral);
+  background: rgba(255, 122, 92, 0.08);
+}
+
+.cursor-ring--drag {
+  width: 62px;
+  height: 62px;
+  border-style: dashed;
+  border-color: var(--cyan);
+}
+
+.cursor-ring--active {
+  width: 46px;
+  height: 46px;
+}
+
+/* =========================================================
    RESPONSIVE
    ========================================================= */
 @media (max-width: 900px) {

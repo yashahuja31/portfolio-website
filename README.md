@@ -16,6 +16,15 @@ build step, no framework, deploys anywhere static files are served
   astronaut model (`assets/astronaut.glb`), fully drag-to-rotate on both
   axes, auto-rotating gently when idle. Suit is **orange in the light
   theme**, **white in the dark theme**.
+- **Custom cursor** (`js/cursor.js`) — a dot + trailing ring, on
+  fine-pointer devices only (mouse/trackpad; untouched on touchscreens).
+  Expands over links, buttons, and cards, and steps aside for the
+  browser's native `grab`/`grabbing` cursor over the skills and
+  astronaut canvases so the drag affordance stays clear. I couldn't
+  reach your original portfolio URL to copy its exact cursor, so this
+  is a fresh one built to match the space theme — tweak size/colors in
+  `.cursor-dot` / `.cursor-ring` in `css/style.css` if you want it
+  closer to the original.
 - **Dark ("Night sky") and light ("Daylight nebula") themes**, toggled
   top-right, persisted in `localStorage`.
 - Scroll-reveal animations, mobile nav, reduced-motion support.

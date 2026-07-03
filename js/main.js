@@ -2,6 +2,9 @@ import { initStarfield } from './starfield.js';
 import { initSkills } from './skills.js';
 import { initProjectVisuals } from './projects3d.js';
 import { initAstronaut } from './astronaut.js';
+import { initCustomCursor } from './cursor.js';
+
+initCustomCursor();
 
 /* ---------------- theme ---------------- */
 const root = document.body;
