@@ -11,6 +11,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css" />
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
 </head>
 <body data-theme="dark">
 
@@ -94,8 +103,10 @@
       </div>
     </div>
 
-    <div class="hero__astronaut" aria-hidden="true">
+    <div class="hero__astronaut">
       <canvas id="astronaut-canvas"></canvas>
+      <p class="hero__astronaut-status" id="astronaut-status">Loading model…</p>
+      <p class="hero__astronaut-hint">Drag to rotate</p>
     </div>
 
     <button class="scroll-cue" id="scroll-cue" aria-label="Scroll to about section">

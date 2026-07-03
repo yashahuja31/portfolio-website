@@ -83,5 +83,6 @@ initSkills(document.getElementById('skills-canvas'), {
 initProjectVisuals();
 
 /* ---------------- three.js: hero astronaut ---------------- */
-astronaut = initAstronaut(document.getElementById('astronaut-canvas'));
+const astronautStatus = document.getElementById('astronaut-status');
+astronaut = initAstronaut(document.getElementById('astronaut-canvas'), astronautStatus);
 astronaut.setTheme(theme);
