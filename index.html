@@ -283,7 +283,8 @@
             <li>Next.js</li><li>Node.js</li><li>Python (ML)</li><li>PostgreSQL</li><li>Docker</li>
           </ul>
           <div class="project-card__links">
-            <a href="#" class="link-arrow">Repository <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+            <a href="https://github.com/yashahuja31/InningInsights" class="link-arrow">Repository <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+            <a href="https://inninginsights.vercel.app" class="link-arrow">Live <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
           </div>
         </div>
       </article>
@@ -324,7 +325,8 @@
             <li>MongoDB</li><li>Express.js</li><li>React</li><li>JWT</li>
           </ul>
           <div class="project-card__links">
-            <a href="#" class="link-arrow">Repository <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+            <a href="https://github.com/yashahuja31/ReaderReviews" class="link-arrow">Repository <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+            <a href="https://reader-reviews.vercel.app" class="link-arrow">Live <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
           </div>
         </div>
       </article>
@@ -344,8 +346,8 @@
             <li>Socket.io</li><li>chess.js</li><li>Stockfish.js</li><li>Tailwind CSS</li>
           </ul>
           <div class="project-card__links">
-            <a href="#" class="link-arrow">Repository <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-            <a href="#" class="link-arrow">Live <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+            <a href="https://github.com/yashahuja31/chessy" class="link-arrow">Repository <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+            <a href="https://chessy-theta.vercel.app/" class="link-arrow">Live <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
           </div>
         </div>
       </article>
@@ -359,16 +361,80 @@
       <p class="section__eyebrow">05 / Open channel</p>
       <h2 class="contact__title">Let's talk.</h2>
       <p class="contact__desc">
-        Open to SDE Intern and Software Engineer roles. The fastest way to
-        reach me is email or phone — I read and answer every message.
+        Open to SDE Intern and Software Engineer roles. Send a message
+        directly, or flip the switch if you're reaching out about a
+        referral — either way it lands in my inbox.
       </p>
+
+      <div class="contact__switch" role="tablist" aria-label="Message type" data-active="contact">
+        <button type="button" class="contact__switch-btn is-active" id="switch-contact" role="tab" aria-selected="true" data-mode="contact">Contact me</button>
+        <button type="button" class="contact__switch-btn" id="switch-referral" role="tab" aria-selected="false" data-mode="referral">Got a referral for me?</button>
+        <span class="contact__switch-thumb" aria-hidden="true"></span>
+      </div>
+
+      <form id="contact-form" class="contact__form" novalidate>
+
+        <div class="contact__fields" data-fields="contact">
+          <div class="field">
+            <label for="c-name">Your name</label>
+            <input id="c-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="c-email">Your email</label>
+            <input id="c-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field field--full">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" rows="4" required></textarea>
+          </div>
+        </div>
+
+        <div class="contact__fields" data-fields="referral" hidden>
+          <div class="field">
+            <label for="r-name">Your name</label>
+            <input id="r-name" name="referrerName" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="r-role">Your role &amp; company</label>
+            <input id="r-role" name="referrerRole" type="text" placeholder="e.g. SDE II at HARMAN">
+          </div>
+          <div class="field">
+            <label for="r-company">Company hiring</label>
+            <input id="r-company" name="company" type="text">
+          </div>
+          <div class="field">
+            <label for="r-position">Open position / Job ID</label>
+            <input id="r-position" name="position" type="text" placeholder="e.g. SDE Intern — REQ-4821">
+          </div>
+          <div class="field field--full">
+            <label for="r-link">Link to the posting <span class="field__optional">(optional)</span></label>
+            <input id="r-link" name="link" type="url" placeholder="https://...">
+          </div>
+          <div class="field field--full">
+            <label for="r-notes">Anything else I should know? <span class="field__optional">(optional)</span></label>
+            <textarea id="r-notes" name="notes" rows="3"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--primary contact__submit">
+          <span id="contact-submit-label">Send message</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 12L12 2M12 2H4M12 2V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="contact__form-note">
+          Opens your email client with these details pre-filled — nothing
+          is stored or sent anywhere else.
+        </p>
+      </form>
+
+      <div class="contact__divider"><span>or reach me directly</span></div>
+
       <a href="mailto:ahujayash460@gmail.com" class="contact__email">
         ahujayash460@gmail.com
       </a>
       <div class="contact__links">
         <a href="tel:+919650083563">+91 96500 83563</a>
-        <a href="#" target="_blank" rel="noopener">GitHub <!-- EDIT_ME: add your GitHub URL --></a>
-        <a href="#" target="_blank" rel="noopener">LinkedIn <!-- EDIT_ME: add your LinkedIn URL --></a>
+        <a href="https://github.com/yashahuja31" target="_blank" rel="noopener">GitHub <!-- EDIT_ME: add your GitHub URL --></a>
+        <a href="https://www.linkedin.com/in/yash-ahuja-610851274/" target="_blank" rel="noopener">LinkedIn <!-- EDIT_ME: add your LinkedIn URL --></a>
         <a href="assets/Yash_Ahuja_Resume.pdf" download>Résumé</a>
       </div>
     </div>

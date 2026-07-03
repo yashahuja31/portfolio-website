@@ -3,8 +3,10 @@ import { initSkills } from './skills.js';
 import { initProjectVisuals } from './projects3d.js';
 import { initAstronaut } from './astronaut.js';
 import { initCustomCursor } from './cursor.js';
+import { initContactForm } from './contact-form.js';
 
 initCustomCursor();
+initContactForm();
 
 /* ---------------- theme ---------------- */
 const root = document.body;

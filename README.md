@@ -25,6 +25,13 @@ build step, no framework, deploys anywhere static files are served
   is a fresh one built to match the space theme — tweak size/colors in
   `.cursor-dot` / `.cursor-ring` in `css/style.css` if you want it
   closer to the original.
+- **Two-mode contact form** (`js/contact-form.js`) in the "Let's talk"
+  section — a switch toggles between "Contact me" (name/email/message)
+  and "Got a referral for me?" (referrer name/role, company, position or
+  job ID, posting link, notes). No backend: submitting builds a
+  `mailto:` link from the fields and hands off to the visitor's email
+  client, addressed to you. See "About the contact form" below if you'd
+  rather it send silently instead.
 - **Dark ("Night sky") and light ("Daylight nebula") themes**, toggled
   top-right, persisted in `localStorage`.
 - Scroll-reveal animations, mobile nav, reduced-motion support.
@@ -58,6 +65,33 @@ pick up the color strongly, dark visor/backpack areas barely shift.
 I haven't been able to render/preview the model myself in this
 environment, so if it loads facing an odd direction, adjust the initial
 rotation in `js/astronaut.js` (search for `rig.rotation`).
+
+## About the contact form
+
+This is a static site with nowhere to send a POST request, so the form
+doesn't submit silently by default — it builds a `mailto:` link from
+whatever was typed and opens the visitor's own email client with it
+pre-filled, addressed to `ahujayash460@gmail.com`. That means:
+
+- It works with zero setup, on any static host, forever.
+- It requires the visitor to actually have an email client configured
+  (most people do; it's a real limitation on some mobile browsers).
+- Nothing is stored or logged anywhere — genuinely private, but also
+  means you can't see submissions in a dashboard.
+
+If you'd rather visitors hit "send" and be done — no email client
+popping up — swap the two `mailto:` builders in `js/contact-form.js`
+for a `fetch()` POST to a form backend. Formspree and EmailJS both have
+free tiers that work from a static site with no server of your own:
+
+```js
+// instead of: window.location.href = mailto;
+await fetch('https://formspree.io/f/your-form-id', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data),
+});
+```
 
 ## Before you deploy — things marked `EDIT_ME`
 
