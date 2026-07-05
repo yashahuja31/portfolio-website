@@ -32,12 +32,27 @@ build step, no framework, deploys anywhere static files are served
   `mailto:` link from the fields and hands off to the visitor's email
   client, addressed to you. See "About the contact form" below if you'd
   rather it send silently instead.
+- **Seven projects, seven distinct Three.js visuals**
+  (`js/projects3d.js`) — each card gets its own animated mini-scene
+  instead of a repeated template: an orbiting satellite
+  (InningInsights), a pulsing tile grid (College Data Management
+  System), a particle sphere (ReaderReviews Hub), a rotating torus knot
+  (Chessy), a globe with a comet on an orbit path (PathWave
+  International), a ping-ponging message pulse with a voice waveform
+  (SiteTalk), and a candlestick cluster with a trend marker (StockAI).
+- **Click a project card for the full write-up** (`js/project-modal.js`)
+  — opens a detail overlay in the same tab with the extended
+  description, highlights, and links. Click anywhere outside the box,
+  press Escape, or hit the close button to dismiss it. Repository/Live
+  links on a card still navigate normally without opening the modal.
 - **Dark ("Night sky") and light ("Daylight nebula") themes**, toggled
   top-right, persisted in `localStorage`.
 - Scroll-reveal animations, mobile nav, reduced-motion support.
 
-Content — name, both internships, all four projects, skills, and
-education — is pulled directly from `Yash_Ahuja_Resume.pdf`. The résumé
+Content — name, both internships, all seven projects, skills, and
+education — is pulled from `Yash_Ahuja_Resume.pdf`, the public READMEs
+for PathWave International and SiteTalk, and the project description
+you gave directly for StockAI. The résumé
 itself is bundled at `assets/Yash_Ahuja_Resume.pdf` and wired up to both
 "Download résumé" buttons.
 
@@ -97,14 +112,23 @@ await fetch('https://formspree.io/f/your-form-id', {
 
 Your résumé doesn't include a GitHub or LinkedIn URL as clickable text
 (pypdf couldn't find embedded link annotations in the PDF either), so
-those two are the only real gaps:
+those are the main real gaps:
 
 1. **`index.html`**
-   - Contact section and every project's "Repository"/"Live" link are
-     `href="#"` placeholders — point them at your actual repos and your
-     GitHub / LinkedIn profile URLs.
+   - Contact section links (GitHub, LinkedIn) are `href="#"`
+     placeholders — point them at your real profile URLs.
+   - Repository/"Write-up"/Live links are `href="#"` placeholders for
+     InningInsights, the College Data Management System, ReaderReviews
+     Hub, Chessy, and StockAI (no repo URL given for it yet since it's
+     still in testing). PathWave and SiteTalk are already live/real.
 
-2. **`js/skills.js`**
+2. **`js/project-modal.js`**
+   - The `PROJECTS` object holds the expanded write-up shown in each
+     card's detail modal — its `links` array needs the same real
+     URLs as the cards in `index.html` (currently `#` for the same
+     five placeholder projects).
+
+3. **`js/skills.js`**
    - The `SKILLS` array at the top drives the whole 3D system. Add,
      remove, or re-categorize entries (`lang` / `frame` / `db` / `tool`)
      and the orbit rebuilds automatically.

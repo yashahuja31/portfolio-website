@@ -4,9 +4,11 @@ import { initProjectVisuals } from './projects3d.js';
 import { initAstronaut } from './astronaut.js';
 import { initCustomCursor } from './cursor.js';
 import { initContactForm } from './contact-form.js';
+import { initProjectModal } from './project-modal.js';
 
 initCustomCursor();
 initContactForm();
+initProjectModal();
 
 /* ---------------- theme ---------------- */
 const root = document.body;

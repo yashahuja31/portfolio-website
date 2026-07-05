@@ -427,6 +427,10 @@ a:focus-visible, button:focus-visible {
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
+.project-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.project-card {
+  cursor: pointer;
+}
 .project-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -453,6 +457,107 @@ a:focus-visible, button:focus-visible {
 .link-arrow { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 13px; color: var(--coral); }
 .link-arrow:hover { color: var(--violet-soft); }
 .project-card--ghost { border-style: dashed; opacity: 0.6; }
+
+body.modal-open { overflow: hidden; }
+
+/* =========================================================
+   PROJECT DETAIL MODAL
+   ========================================================= */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8vh 20px 6vh;
+  overflow-y: auto;
+  background: rgba(3, 4, 12, 0.6);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s var(--ease);
+}
+.project-modal[hidden] { display: none; }
+[data-theme="light"] .project-modal { background: rgba(20, 20, 45, 0.32); }
+.project-modal.is-open { opacity: 1; pointer-events: auto; }
+
+.project-modal__box {
+  position: relative;
+  width: min(680px, 100%);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 24px;
+  padding: clamp(28px, 5vw, 48px);
+  box-shadow: var(--shadow);
+  transform: translateY(16px) scale(0.98);
+  transition: transform .3s var(--ease);
+}
+.project-modal.is-open .project-modal__box { transform: translateY(0) scale(1); }
+
+.project-modal__close {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 34px; height: 34px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--surface-2);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color .25s var(--ease), border-color .25s var(--ease);
+}
+.project-modal__close:hover { color: var(--coral); border-color: var(--coral); }
+
+.project-modal__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cyan);
+  margin: 0 0 10px;
+  padding-right: 40px;
+}
+.project-modal__title {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 600;
+  margin: 0 0 20px;
+  padding-right: 40px;
+}
+.project-modal__body p {
+  color: var(--text-dim);
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+.project-modal__highlights {
+  margin: 20px 0;
+  padding: 18px 20px;
+  background: var(--surface-2);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.project-modal__highlights li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.project-modal__highlights li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 7px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+.project-modal #modal-tags { margin: 0 0 24px; }
+.project-modal__links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
 /* =========================================================
    CONTACT
@@ -532,6 +637,7 @@ a:focus-visible, button:focus-visible {
   gap: 18px;
   margin-bottom: 8px;
 }
+.contact__fields[hidden] { display: none; }
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field--full { grid-column: 1 / -1; }
 .field label {
