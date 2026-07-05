@@ -12,7 +12,7 @@ const PROJECTS = {
       'Dockerized services behind an automated CI/CD pipeline',
     ],
     tags: ['Next.js', 'Node.js', 'Python (ML)', 'PostgreSQL', 'Docker'],
-    links: [{ label: 'Live', href: '' }],
+    links: [{ label: 'To Be Launched Soon', href: 'https://inninginsights.com/' }],
   },
   'college-dms': {
     eyebrow: 'Enterprise system',
@@ -26,8 +26,8 @@ const PROJECTS = {
       'Role-based access control across Admin, Faculty, and Student roles',
       'Full CRUD for attendance, courses, grades, and admin records',
     ],
-    tags: ['C# / .NET', 'MS SQL Server', 'MVC', 'RBAC'],
-    links: [{ label: 'Write-up', href: '' }],
+    tags: ['C# / .NET', 'MS SQL Server', 'MVC', 'RBAC', 'Data normalization', 'CRUD'],
+    links: [{ label: 'Write-up', href: 'https://medium.com/@darkabsoul0/from-zero-to-crud-hero-how-i-built-a-full-blown-college-management-system-in-3-months-b8c8f69ed9ea?sharedUserId=darkabsoul0' }],
   },
   readerreviews: {
     eyebrow: 'MERN application',
@@ -42,7 +42,10 @@ const PROJECTS = {
       'REST APIs built for growing user data',
     ],
     tags: ['MongoDB', 'Express.js', 'React', 'JWT'],
-    links: [{ label: 'Repository', href: 'https://github.com/yashahuja31/ReaderReviews' }, { label: 'Live', href: 'https://reader-reviews.vercel.app/' }],
+    links: [
+      { label: 'Repository', href: 'https://github.com/yashahuja31/ReaderReviews' }, 
+      { label: 'Live', href: 'https://reader-reviews.vercel.app/' }
+    ],
   },
   chessy: {
     eyebrow: 'Real-time multiplayer',
@@ -57,7 +60,10 @@ const PROJECTS = {
       'Move validation & state sync via chess.js',
     ],
     tags: ['Socket.io', 'chess.js', 'Stockfish.js', 'Tailwind CSS'],
-    links: [{ label: 'Repository', href: 'https://github.com/yashahuja31/chessy' }, { label: 'Live', href: 'https://chessy-theta.vercel.app/' }],
+    links: [
+      { label: 'Repository', href: 'https://github.com/yashahuja31/chessy' }, 
+      { label: 'Live', href: 'https://chessy-theta.vercel.app/' }
+    ],
   },
   pathwave: {
     eyebrow: 'Study-abroad platform',
