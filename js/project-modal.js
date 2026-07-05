@@ -12,7 +12,7 @@ const PROJECTS = {
       'Dockerized services behind an automated CI/CD pipeline',
     ],
     tags: ['Next.js', 'Node.js', 'Python (ML)', 'PostgreSQL', 'Docker'],
-    links: [{ label: 'Repository', href: '#' }],
+    links: [{ label: 'Live', href: '' }],
   },
   'college-dms': {
     eyebrow: 'Enterprise system',
@@ -27,7 +27,7 @@ const PROJECTS = {
       'Full CRUD for attendance, courses, grades, and admin records',
     ],
     tags: ['C# / .NET', 'MS SQL Server', 'MVC', 'RBAC'],
-    links: [{ label: 'Write-up', href: '#' }],
+    links: [{ label: 'Write-up', href: '' }],
   },
   readerreviews: {
     eyebrow: 'MERN application',
@@ -42,7 +42,7 @@ const PROJECTS = {
       'REST APIs built for growing user data',
     ],
     tags: ['MongoDB', 'Express.js', 'React', 'JWT'],
-    links: [{ label: 'Repository', href: '#' }],
+    links: [{ label: 'Repository', href: 'https://github.com/yashahuja31/ReaderReviews' }, { label: 'Live', href: 'https://reader-reviews.vercel.app/' }],
   },
   chessy: {
     eyebrow: 'Real-time multiplayer',
@@ -57,7 +57,7 @@ const PROJECTS = {
       'Move validation & state sync via chess.js',
     ],
     tags: ['Socket.io', 'chess.js', 'Stockfish.js', 'Tailwind CSS'],
-    links: [{ label: 'Repository', href: '#' }, { label: 'Live', href: '#' }],
+    links: [{ label: 'Repository', href: 'https://github.com/yashahuja31/chessy' }, { label: 'Live', href: 'https://chessy-theta.vercel.app/' }],
   },
   pathwave: {
     eyebrow: 'Study-abroad platform',
@@ -108,7 +108,7 @@ const PROJECTS = {
       'Circuit breaker on max drawdown; 80+ features across trend, momentum, volatility, volume, and market structure',
     ],
     tags: ['XGBoost', 'LightGBM', 'CatBoost', 'LSTM', 'Nelder-Mead'],
-    links: [{ label: 'Repository', href: '#' }],
+    links: [{ label: 'Live Soon', href: 'https://stock.ai' }],
   },
 };
 
