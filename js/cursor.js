@@ -47,8 +47,8 @@ export function initCustomCursor() {
     if (!e.relatedTarget) hide();
   });
 
-  const HOVER = 'a, button, .btn, .project-card, .about__card, input, textarea, select, .theme-toggle, .nav__burger';
-  const DRAG = '#skills-canvas, #astronaut-canvas';
+  const HOVER = 'a, button, .btn, .project-card, .about__card, input, textarea, select, .theme-toggle, .nav__burger, .sound-toggle';
+  const DRAG = '#skills-canvas';
 
   document.addEventListener('mouseover', (e) => {
     const t = e.target;

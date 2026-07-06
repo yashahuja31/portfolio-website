@@ -12,7 +12,7 @@ const PROJECTS = {
       'Dockerized services behind an automated CI/CD pipeline',
     ],
     tags: ['Next.js', 'Node.js', 'Python (ML)', 'PostgreSQL', 'Docker'],
-    links: [{ label: 'To Be Launched Soon', href: 'https://inninginsights.com/' }],
+    links: [{ label: 'Launching Soon', href: '#' }],
   },
   'college-dms': {
     eyebrow: 'Enterprise system',
@@ -26,8 +26,8 @@ const PROJECTS = {
       'Role-based access control across Admin, Faculty, and Student roles',
       'Full CRUD for attendance, courses, grades, and admin records',
     ],
-    tags: ['C# / .NET', 'MS SQL Server', 'MVC', 'RBAC', 'Data normalization', 'CRUD'],
-    links: [{ label: 'Write-up', href: 'https://medium.com/@darkabsoul0/from-zero-to-crud-hero-how-i-built-a-full-blown-college-management-system-in-3-months-b8c8f69ed9ea?sharedUserId=darkabsoul0' }],
+    tags: ['C# / .NET', 'MS SQL Server', 'MVC', 'RBAC'],
+    links: [{ label: 'Write-up', href: 'https://medium.com/@darkabsoul0/from-zero-to-crud-hero-how-i-built-a-full-blown-college-management-system-in-3-months-b8c8f69ed9ea' }],
   },
   readerreviews: {
     eyebrow: 'MERN application',
@@ -43,8 +43,8 @@ const PROJECTS = {
     ],
     tags: ['MongoDB', 'Express.js', 'React', 'JWT'],
     links: [
-      { label: 'Repository', href: 'https://github.com/yashahuja31/ReaderReviews' }, 
-      { label: 'Live', href: 'https://reader-reviews.vercel.app/' }
+      { label: 'Repository', href: 'https://github.com/yashahuja31/ReaderReviews' },
+      { label: 'Live', href: 'https://reader-reviews.vercel.app/' },
     ],
   },
   chessy: {
@@ -61,8 +61,8 @@ const PROJECTS = {
     ],
     tags: ['Socket.io', 'chess.js', 'Stockfish.js', 'Tailwind CSS'],
     links: [
-      { label: 'Repository', href: 'https://github.com/yashahuja31/chessy' }, 
-      { label: 'Live', href: 'https://chessy-theta.vercel.app/' }
+      { label: 'Repository', href: 'https://github.com/yashahuja31/Chessy' }, 
+      { label: 'Live', href: 'https://chessy.vercel.app/' }
     ],
   },
   pathwave: {
@@ -97,7 +97,10 @@ const PROJECTS = {
       'Minimal permissions (storage, activeTab) for a privacy-conscious extension',
     ],
     tags: ['Chrome Extension', 'JavaScript', 'Chrome Storage API', 'Node.js (sync server)'],
-    links: [{ label: 'Repository', href: 'https://github.com/yashahuja31/SiteTalk' }],
+    links: [
+      { label: 'Repository', href: 'https://github.com/yashahuja31/SiteTalk' },
+      { label: 'Live', href: 'https://site-talk.vercel.app/' }
+    ],
   },
   stockai: {
     eyebrow: 'ML trading system · In testing',
@@ -114,7 +117,7 @@ const PROJECTS = {
       'Circuit breaker on max drawdown; 80+ features across trend, momentum, volatility, volume, and market structure',
     ],
     tags: ['XGBoost', 'LightGBM', 'CatBoost', 'LSTM', 'Nelder-Mead'],
-    links: [{ label: 'Live Soon', href: 'https://stock.ai' }],
+    links: [{ label: 'Launching Soon', href: '#' }],
   },
 };
 
@@ -151,6 +154,7 @@ export function initProjectModal() {
     document.body.classList.add('modal-open');
     requestAnimationFrame(() => modal.classList.add('is-open'));
     closeBtn.focus();
+    document.dispatchEvent(new CustomEvent('sfx', { detail: 'open' }));
   }
 
   function close() {
@@ -159,6 +163,7 @@ export function initProjectModal() {
     const done = () => { modal.hidden = true; };
     setTimeout(done, 250);
     if (lastFocused && lastFocused.focus) lastFocused.focus();
+    document.dispatchEvent(new CustomEvent('sfx', { detail: 'close' }));
   }
 
   document.querySelectorAll('.project-card[data-project]').forEach((card) => {

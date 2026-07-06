@@ -5,10 +5,14 @@ import { initAstronaut } from './astronaut.js';
 import { initCustomCursor } from './cursor.js';
 import { initContactForm } from './contact-form.js';
 import { initProjectModal } from './project-modal.js';
+import { initSound } from './sound.js';
+import { initPreloader } from './preloader.js';
 
+initPreloader();
 initCustomCursor();
 initContactForm();
 initProjectModal();
+initSound();
 
 /* ---------------- theme ---------------- */
 const root = document.body;
@@ -32,7 +36,10 @@ function applyTheme(t) {
 }
 applyTheme(theme);
 
-toggle.addEventListener('click', () => applyTheme(theme === 'dark' ? 'light' : 'dark'));
+toggle.addEventListener('click', () => {
+  applyTheme(theme === 'dark' ? 'light' : 'dark');
+  document.dispatchEvent(new CustomEvent('sfx', { detail: 'toggle' }));
+});
 
 /* ---------------- mobile nav ---------------- */
 const burger = document.getElementById('nav-burger');
@@ -83,6 +90,7 @@ initSkills(document.getElementById('skills-canvas'), {
       <h3 class="skills__readout-name">${skill.name}</h3>
       <p class="skills__readout-hint">${skill.desc}</p>
     `;
+    document.dispatchEvent(new CustomEvent('sfx', { detail: 'select' }));
   },
 });
 

@@ -13,18 +13,32 @@ build step, no framework, deploys anywhere static files are served
   detail in the readout panel. Inner ring = core languages, mid ring =
   frameworks, outer ring = platforms/practice.
 - **Astronaut in the hero** (`js/astronaut.js`) — your real Sketchfab/Meshy
-  astronaut model (`assets/astronaut.glb`), fully drag-to-rotate on both
-  axes, auto-rotating gently when idle. Suit is **orange in the light
-  theme**, **white in the dark theme**.
+  astronaut model (`assets/astronaut.glb`). It turns to face wherever the
+  cursor is anywhere on the page (not just when hovering it directly) —
+  an ambient reaction rather than something to drag. On touch devices,
+  with no persistent pointer, it falls back to a slow autonomous sway.
+  Suit is **orange in the light theme**, **white in the dark theme**.
+  Flows into the layout below the hero text on small screens instead of
+  disappearing.
 - **Custom cursor** (`js/cursor.js`) — a dot + trailing ring, on
   fine-pointer devices only (mouse/trackpad; untouched on touchscreens).
   Expands over links, buttons, and cards, and steps aside for the
-  browser's native `grab`/`grabbing` cursor over the skills and
-  astronaut canvases so the drag affordance stays clear. I couldn't
-  reach your original portfolio URL to copy its exact cursor, so this
-  is a fresh one built to match the space theme — tweak size/colors in
-  `.cursor-dot` / `.cursor-ring` in `css/style.css` if you want it
-  closer to the original.
+  browser's native `grab`/`grabbing` cursor over the skills constellation
+  so the drag affordance stays clear. I couldn't reach your original
+  portfolio URL to copy its exact cursor, so this is a fresh one built to
+  match the space theme — tweak size/colors in `.cursor-dot` /
+  `.cursor-ring` in `css/style.css` if you want it closer to the original.
+- **Preloader** (`js/preloader.js`) — a short boot-sequence screen (orbit
+  spinner, percentage counter, status line) on first load. I couldn't
+  get a real look at natsha.me — it's JS-rendered and my fetch tool only
+  returned an empty shell — so this is built to fit the space theme
+  rather than copy that site; point me at specifics if you want it to
+  look more like theirs.
+- **Sound effects** (`js/sound.js`) — short synthesized tones (Web Audio,
+  no audio files to ship) for clicks, the theme toggle, opening/closing
+  a project's detail modal, picking a skill node, and submitting the
+  contact form. **Off by default** — toggle in the nav, remembered in
+  `localStorage`, so a recruiter opening the tab isn't surprised by audio.
 - **Two-mode contact form** (`js/contact-form.js`) in the "Let's talk"
   section — a switch toggles between "Contact me" (name/email/message)
   and "Got a referral for me?" (referrer name/role, company, position or

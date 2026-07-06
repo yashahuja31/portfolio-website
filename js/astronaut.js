@@ -2,10 +2,12 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 /**
- * Loads the real astronaut model (assets/astronaut.glb) into the hero.
- * Fully drag-to-rotate, same interaction language as the skills orbit:
- * pointer drag rotates the figure on both axes, it auto-rotates gently
- * when idle, and it re-tints on theme change.
+ * Loads the astronaut model (assets/astronaut.glb) into the hero.
+ * Instead of drag-to-rotate, it gently turns to "look toward" wherever
+ * the cursor is anywhere on the page — a living, ambient reaction
+ * rather than something the visitor has to operate. On touch devices,
+ * where there's no persistent pointer, it falls back to a slow
+ * autonomous sway.
  *
  * The source model ships with a single baked material/texture across
  * the whole mesh (helmet, suit, backpack all share one texture), so
@@ -34,7 +36,7 @@ export function initAstronaut(canvas, statusEl) {
   warmFill.position.set(2, -2, 4);
   scene.add(warmFill);
 
-  const rig = new THREE.Group(); // drag rotation applied here
+  const rig = new THREE.Group(); // cursor-follow rotation applied here
   scene.add(rig);
 
   let suitMaterials = [];
@@ -45,7 +47,6 @@ export function initAstronaut(canvas, statusEl) {
     (gltf) => {
       const model = gltf.scene;
 
-      // frame the model: center it and scale to a consistent height
       const box = new THREE.Box3().setFromObject(model);
       const size = new THREE.Vector3();
       const center = new THREE.Vector3();
@@ -57,11 +58,7 @@ export function initAstronaut(canvas, statusEl) {
       model.scale.setScalar(scale);
 
       model.traverse((obj) => {
-        if (obj.isMesh) {
-          obj.castShadow = false;
-          obj.receiveShadow = false;
-          if (obj.material) suitMaterials.push(obj.material);
-        }
+        if (obj.isMesh && obj.material) suitMaterials.push(obj.material);
       });
 
       rig.add(model);
@@ -81,41 +78,42 @@ export function initAstronaut(canvas, statusEl) {
   }
 
   function tintSuit(theme) {
-    // swapped intentionally: orange in the light theme (pops off a
-    // white background), white/neutral in the dark theme (pops off
-    // black)
+    // orange in the light theme (pops off a white background), white
+    // in the dark theme (pops off black)
     const color = theme === 'light' ? 0xff7a3d : 0xffffff;
     suitMaterials.forEach((m) => {
       if (m.color) m.color.set(color);
     });
   }
 
-  // ---- interaction: free drag rotation on both axes ----
-  let isDragging = false, lastX = 0, lastY = 0;
-  let velX = 0, velY = 0;
-  let rotX = 0.05, rotY = 0;
+  // ---- cursor-follow: track the pointer anywhere on the page ----
+  const MAX_YAW = 0.55;
+  const MAX_PITCH = 0.22;
+  let targetYaw = -0.15;
+  let targetPitch = 0.05;
+  let curYaw = targetYaw;
+  let curPitch = targetPitch;
+  let lastInputAt = 0;
 
-  canvas.style.touchAction = 'none';
-  canvas.style.cursor = 'grab';
+  function setTargetFromNormalized(nx, ny) {
+    targetYaw = -0.15 + nx * MAX_YAW;
+    targetPitch = 0.05 - ny * MAX_PITCH;
+    lastInputAt = performance.now();
+  }
 
-  canvas.addEventListener('pointerdown', (e) => {
-    isDragging = true;
-    lastX = e.clientX; lastY = e.clientY;
-    canvas.setPointerCapture(e.pointerId);
-    canvas.style.cursor = 'grabbing';
-  });
-  canvas.addEventListener('pointermove', (e) => {
-    if (!isDragging) return;
-    const dx = e.clientX - lastX, dy = e.clientY - lastY;
-    velY = dx * 0.006;
-    velX = dy * 0.006;
-    rotY += velY;
-    rotX = Math.max(-0.9, Math.min(0.9, rotX + velX));
-    lastX = e.clientX; lastY = e.clientY;
-  });
-  function release() { isDragging = false; canvas.style.cursor = 'grab'; }
-  canvas.addEventListener('pointerup', release);
-  canvas.addEventListener('pointerleave', release);
+  window.addEventListener('mousemove', (e) => {
+    const nx = (e.clientX / window.innerWidth) * 2 - 1;
+    const ny = (e.clientY / window.innerHeight) * 2 - 1;
+    setTargetFromNormalized(nx, ny);
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!e.touches.length) return;
+    const t = e.touches[0];
+    const nx = (t.clientX / window.innerWidth) * 2 - 1;
+    const ny = (t.clientY / window.innerHeight) * 2 - 1;
+    setTargetFromNormalized(nx, ny);
+  }, { passive: true });
 
   function resize() {
     const w = parent.clientWidth, h = parent.clientHeight;
@@ -138,13 +136,21 @@ export function initAstronaut(canvas, statusEl) {
   function animate() {
     if (!paused) {
       const t = clock.getElapsedTime();
-      if (!isDragging) {
-        rotY += 0.0018; // gentle idle auto-rotate
-        velX *= 0.9; velY *= 0.9;
+
+      // if no pointer input for a while (e.g. touch device idling),
+      // drift gently on its own so it still feels alive
+      const idleFor = performance.now() - lastInputAt;
+      if (idleFor > 2500) {
+        targetYaw = -0.15 + Math.sin(t * 0.25) * 0.35;
+        targetPitch = 0.05 + Math.sin(t * 0.4) * 0.1;
       }
-      rig.rotation.y = rotY;
-      rig.rotation.x = rotX;
+
+      curYaw += (targetYaw - curYaw) * 0.045;
+      curPitch += (targetPitch - curPitch) * 0.045;
+      rig.rotation.y = curYaw;
+      rig.rotation.x = curPitch;
       rig.position.y = Math.sin(t * 0.55) * 0.05;
+
       renderer.render(scene, camera);
     } else {
       clock.getDelta();

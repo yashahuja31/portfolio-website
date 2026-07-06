@@ -53,6 +53,7 @@ export function initContactForm() {
     const mode = switchEl.dataset.active;
     const data = Object.fromEntries(new FormData(form).entries());
     const mailto = mode === 'contact' ? buildContactMailto(data) : buildReferralMailto(data);
+    document.dispatchEvent(new CustomEvent('sfx', { detail: 'submit' }));
     window.location.href = mailto;
   });
 
