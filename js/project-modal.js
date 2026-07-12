@@ -118,6 +118,42 @@ const PROJECTS = {
     ],
     tags: ['XGBoost', 'LightGBM', 'CatBoost', 'LSTM', 'Nelder-Mead'],
     links: [{ label: 'Launching Soon', href: '#' }],
+    shiftwork: {
+  eyebrow: 'Branching career simulator',
+  title: 'ShiftWork',
+  body: [
+    'ShiftWork is a branching, stat-driven career simulator — twelve fully playable careers, from trauma surgeon to astronaut to software engineer, sharing one engine built from JSON scene graphs rather than one-off code per career.',
+    'The standout piece is the animated character: a hand-built SVG figure animated with Framer Motion whose posture, expression, and pace shift with a mood computed live from stress, energy, and reputation, plus a pulsing tension ring during each career\'s signature decision. Every scene also gets its own small animated vignette — a car driving past sliding road markings, a pulsing ECG line, a rotating gear — rather than a static icon.',
+    'The compatibility score went through two failed versions before landing: an early continuous formula never dropped below the mid-50s even on the worst play, and a five-tier version still put 93% of random playthroughs in the top two tiers. The fix was per-career percentile calibration — 20,000 simulated random runs per career establish the baseline, and the score is literally a percentile rank against it, verified to land a mean and median of exactly 50.',
+  ],
+  highlights: [
+    '12 fully playable careers (~15–19 scenes each) sharing one JSON-driven engine',
+    'Hand-built animated SVG character — mood, posture, and a tension glow react live to your stats',
+    'Compatibility score calibrated against 20,000 simulated playthroughs per career, not a fixed formula',
+    'Server-side replay scoring — the server re-simulates your decisions rather than trusting a client-submitted score',
+  ],
+  tags: ['Next.js', 'TypeScript', 'Prisma', 'Clerk', 'Framer Motion'],
+  links: [
+    { label: 'Repository', href: 'https://github.com/yashahuja31/ShiftWork' },
+    { label: 'Live', href: 'https://shift-your-career.vercel.app/' },
+  ],
+},
+optivault: {
+  eyebrow: 'Cloud cost optimizer',
+  title: 'OptiVault',
+  body: [
+    'OptiVault is an AI-driven cost optimizer for AWS S3 storage: it connects to a customer\'s account with read-only access, scans object metadata, and looks for the usual ways cloud storage costs quietly bloat — duplicate files, data that\'s gone stale, objects parked in the wrong storage tier for how they\'re actually accessed.',
+    'The core design choice is that nothing executes automatically. Every optimization it finds is proposed to the customer first, who reviews and explicitly approves before any action runs — and the system never reads or stores file contents at any point, only metadata, so the trust boundary stays as narrow as the read-only S3 connection itself.',
+  ],
+  highlights: [
+    'Read-only AWS S3 connection — access can\'t be widened by this system',
+    'Detects duplicate files, stale data, and objects in the wrong storage tier',
+    'Every action is proposed and requires explicit customer approval before it executes',
+    'Scans object metadata only — file contents are never read or stored',
+  ],
+  tags: ['AWS S3', 'Read-only Access', 'Metadata Scanning', 'Cost Optimization'],
+  links: [{ label: 'Launching Soon', href: '#' }],
+},
   },
 };
 

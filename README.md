@@ -154,7 +154,7 @@ a local server rather than double-clicking the HTML file:
 
 ```bash
 # any static server works, for example:
-npx serve .
+npx serve@latest .
 # or
 python3 -m http.server 8080
 ```

@@ -8,6 +8,8 @@ const ACCENTS = {
   pathwave: 0xff9ecf,
   sitetalk: 0x6cc4ff,
   stockai: 0x4ade80,
+  shiftwork: 0xff5c7a,
+  optivault: 0x60d394,
 };
 
 export function initProjectVisuals() {
@@ -29,7 +31,7 @@ function mountScene(canvas, viz, color) {
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 20);
   camera.position.set(0, 0, 3.6);
 
-  const builders = { orbit, checkerboard, particles, torusknot, globe, chat, candles };
+  const builders = { orbit, checkerboard, particles, torusknot, globe, chat, candles, ecg, vault };
   const build = builders[viz] || orbit;
   const update = build(scene, color);
 
@@ -329,6 +331,92 @@ function candles(scene, color) {
     const idx = Math.floor((t * 0.8) % count);
     const target = bars[idx];
     marker.position.set(target.x, target.mesh.position.y + (target.baseHeight * target.mesh.scale.y) / 2 + 0.14, 0);
+  };
+}
+
+/* ---------------------------------------------------------
+   8. ECG — a heartbeat waveform with a traveling scan point
+      (ShiftWork: the live stress-reactive ECG line is the app's
+      own signature UI element)
+   --------------------------------------------------------- */
+function ecg(scene, color) {
+  const points = [];
+  const width = 3.6, samples = 140;
+  for (let i = 0; i <= samples; i++) {
+    const x = (i / samples - 0.5) * width;
+    let y = 0;
+    const phase = i % 40;
+    if (phase === 18) y = -0.15;
+    else if (phase === 20) y = 0.65;
+    else if (phase === 22) y = -0.3;
+    else if (phase === 24) y = 0.05;
+    y += (Math.random() - 0.5) * 0.01;
+    points.push(new THREE.Vector3(x, y, 0));
+  }
+  const geo = new THREE.BufferGeometry().setFromPoints(points);
+  const line = new THREE.Line(geo, new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.85 }));
+  scene.add(line);
+
+  const glowDot = new THREE.Mesh(new THREE.SphereGeometry(0.045, 12, 12), new THREE.MeshBasicMaterial({ color: 0xffffff }));
+  scene.add(glowDot);
+
+  addStars(scene);
+
+  return (dt, t) => {
+    const cycle = (t * 0.6) % 1;
+    const idx = Math.min(samples, Math.floor(cycle * samples));
+    const pos = points[idx] || points[0];
+    glowDot.position.set(pos.x, pos.y, 0.02);
+    line.material.opacity = 0.6 + Math.sin(t * 3) * 0.2;
+    line.rotation.z = Math.sin(t * 0.15) * 0.02;
+  };
+}
+
+/* ---------------------------------------------------------
+   9. VAULT — objects drifting down through stacked storage
+      tiers, flagged ones fading out (OptiVault: metadata
+      scanning, duplicate/stale detection across storage tiers)
+   --------------------------------------------------------- */
+function vault(scene, color) {
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const tierCount = 4;
+  for (let i = 0; i < tierCount; i++) {
+    const tier = new THREE.Mesh(
+      new THREE.BoxGeometry(1.3, 0.14, 1.3),
+      new THREE.MeshBasicMaterial({ color, wireframe: true, transparent: true, opacity: 0.5 - i * 0.06 })
+    );
+    tier.position.y = -0.55 + i * 0.32;
+    group.add(tier);
+  }
+  group.rotation.x = -0.4;
+
+  const objs = [];
+  for (let i = 0; i < 10; i++) {
+    const mesh = new THREE.Mesh(
+      new THREE.SphereGeometry(0.045, 10, 10),
+      new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true })
+    );
+    mesh.userData = {
+      phase: Math.random(),
+      x: (Math.random() - 0.5) * 0.9,
+      z: (Math.random() - 0.5) * 0.9,
+      flagged: i % 4 === 0, // one in four reads as "detected duplicate/stale"
+    };
+    group.add(mesh);
+    objs.push(mesh);
+  }
+
+  addStars(scene);
+
+  return (dt, t) => {
+    group.rotation.y = Math.sin(t * 0.2) * 0.3;
+    objs.forEach((o) => {
+      const p = (o.userData.phase + t * 0.12) % 1;
+      o.position.set(o.userData.x, -0.7 + p * 1.5, o.userData.z);
+      o.material.opacity = o.userData.flagged ? Math.max(0, 1 - p * 1.6) : 0.85;
+    });
   };
 }
 
