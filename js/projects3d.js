@@ -10,6 +10,8 @@ const ACCENTS = {
   stockai: 0x4ade80,
   shiftwork: 0xff5c7a,
   optivault: 0x60d394,
+  'nimbus-ai': 0x8ab4ff,
+  shoep: 0xffb86c,
 };
 
 export function initProjectVisuals() {
@@ -31,7 +33,7 @@ function mountScene(canvas, viz, color) {
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 20);
   camera.position.set(0, 0, 3.6);
 
-  const builders = { orbit, checkerboard, particles, torusknot, globe, chat, candles, ecg, vault };
+  const builders = { orbit, checkerboard, particles, torusknot, globe, chat, candles, ecg, vault, pipeline, scan };
   const build = builders[viz] || orbit;
   const update = build(scene, color);
 
@@ -433,4 +435,96 @@ function addStars(scene) {
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   const stars = new THREE.Points(geo, new THREE.PointsMaterial({ color: 0xffffff, size: 0.018, transparent: true, opacity: 0.4 }));
   scene.add(stars);
+}
+
+/* ---------------------------------------------------------
+   10. PIPELINE — a request traveling chat → plan → approval
+       gate → execute, pausing/flickering at the gate
+       (Nimbus AI: the approval gate is the whole point)
+   --------------------------------------------------------- */
+function pipeline(scene, color) {
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const stageX = [-1.35, -0.45, 0.45, 1.35];
+  stageX.forEach((x, i) => {
+    const mesh = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.14, 0),
+      new THREE.MeshBasicMaterial({ color: i === 2 ? 0xffffff : color, wireframe: true, transparent: true, opacity: 0.85 })
+    );
+    mesh.position.set(x, 0, 0);
+    group.add(mesh);
+  });
+
+  const lineGeo = new THREE.BufferGeometry().setFromPoints(stageX.map((x) => new THREE.Vector3(x, 0, 0)));
+  group.add(new THREE.Line(lineGeo, new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.3 })));
+
+  // the approval gate sits at stage index 2
+  const gateRing = new THREE.Mesh(
+    new THREE.RingGeometry(0.2, 0.24, 24),
+    new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5, side: THREE.DoubleSide })
+  );
+  gateRing.position.set(0.45, 0, 0);
+  group.add(gateRing);
+
+  const pulse = new THREE.Mesh(new THREE.SphereGeometry(0.05, 12, 12), new THREE.MeshBasicMaterial({ color: 0xffffff }));
+  group.add(pulse);
+
+  addStars(scene);
+
+  const cycle = 3.2;
+  return (dt, t) => {
+    group.rotation.y = Math.sin(t * 0.15) * 0.25;
+    const local = t % cycle;
+    const HOLD = 0.6;
+    if (local < 1.2) {
+      pulse.position.x = THREE.MathUtils.lerp(stageX[0], stageX[2], local / 1.2);
+      gateRing.material.opacity = 0.5;
+    } else if (local < 1.2 + HOLD) {
+      pulse.position.x = stageX[2];
+      gateRing.material.opacity = 0.5 + Math.sin((local - 1.2) * 20) * 0.4; // flickers while "awaiting approval"
+    } else {
+      pulse.position.x = THREE.MathUtils.lerp(stageX[2], stageX[3], (local - 1.2 - HOLD) / (cycle - 1.2 - HOLD));
+      gateRing.material.opacity = 0.15;
+    }
+  };
+}
+
+/* ---------------------------------------------------------
+   11. SCAN — a scan plane sweeping a wireframe core, with
+       marketplace listing nodes orbiting at different rates
+       (ShoeP: AI photo recognition + multi-marketplace aggregation)
+   --------------------------------------------------------- */
+function scan(scene, color) {
+  const core = new THREE.Mesh(
+    new THREE.OctahedronGeometry(0.55, 0),
+    new THREE.MeshBasicMaterial({ color, wireframe: true, transparent: true, opacity: 0.85 })
+  );
+  scene.add(core);
+
+  const scanPlane = new THREE.Mesh(
+    new THREE.PlaneGeometry(1.3, 1.3),
+    new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.12, side: THREE.DoubleSide })
+  );
+  scanPlane.rotation.y = Math.PI / 2;
+  scene.add(scanPlane);
+
+  const listings = [0xffffff, color, 0xffffff].map((c, i) => {
+    const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.06, 12, 12), new THREE.MeshBasicMaterial({ color: c, transparent: true, opacity: 0.85 }));
+    mesh.userData = { radius: 0.95 + i * 0.22, speed: 0.5 + i * 0.18, offset: i * 2.1 };
+    scene.add(mesh);
+    return mesh;
+  });
+
+  addStars(scene);
+
+  return (dt, t) => {
+    core.rotation.y += dt * 0.3;
+    core.rotation.x = Math.sin(t * 0.2) * 0.15;
+    scanPlane.position.x = Math.sin(t * 0.8) * 0.75;
+    listings.forEach((l) => {
+      const a = t * l.userData.speed + l.userData.offset;
+      l.position.set(Math.cos(a) * l.userData.radius, Math.sin(a * 0.7) * 0.3, Math.sin(a) * l.userData.radius);
+    });
+  };
 }

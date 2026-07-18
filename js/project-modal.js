@@ -102,6 +102,42 @@ const PROJECTS = {
       { label: 'Live', href: 'https://site-talk.vercel.app/' }
     ],
   },
+  'nimbus-ai': {
+    eyebrow: 'AI cloud infrastructure agent',
+    title: 'Nimbus AI',
+    body: [
+      'Nimbus AI takes a plain-English request — "create an S3 bucket for app logs" — and turns it into a concrete plan: the exact AWS operations, generated Terraform, a risk level, and a cost estimate. Nothing touches the customer\'s AWS account until they explicitly approve it.',
+      'The planner is a LangGraph graph calling Gemini with structured output restricted to a fixed, server-side catalog of safe operations — the model can\'t propose something outside that list, and even what it does propose only ever executes from a request a human triggered by clicking Approve. That\'s enforced at the API layer, not by prompting the model to behave itself: approval was deliberately kept out of the LangGraph graph, so a bug in the planning logic can\'t accidentally skip a call that was never made in the first place.',
+      'Approved steps run asynchronously through Celery and Redis, with every attempt writing an audit-trail row, behind a DRY_RUN flag (on by default) that logs every AWS call without sending it until deliberately switched off. This repo is the Phase 1 MVP of a larger roadmap — infrastructure automation, a DevOps diagnostic agent, cost optimization, incident response, security scanning, and eventually a multi-agent, multi-cloud system — built so each phase is additive rather than a rewrite.',
+    ],
+    highlights: [
+      'Plan → review → approve → execute — the approval gate is enforced by the API layer, not by prompting the model',
+      'LangGraph + Gemini planner restricted to a fixed, server-side catalog of safe operations',
+      'Async execution via Celery/Redis with a full audit trail and a DRY_RUN safety default',
+      'Phase 1 of a 9-phase roadmap (infra automation, DevOps agent, cost optimization, incident response, security, multi-cloud)',
+    ],
+    tags: ['FastAPI', 'LangGraph', 'Gemini', 'Next.js', 'Celery'],
+    links: [{ label: 'Repository', href: 'https://github.com/yashahuja31/nimbus-ai' }],
+  },
+  shoep: {
+    eyebrow: 'Sneaker marketplace + AI recognition',
+    title: 'ShoeP',
+    body: [
+      'ShoeP is a sneaker marketplace aggregator and authenticity checker: search a shoe by name or drag in a photo, and it identifies the model via the Gemini API, then aggregates offers across marketplaces like StockX, GOAT, eBay, and brand stores — price, shipping, and a seller safety tier for each listing.',
+      'Every one of the catalog\'s 963 models gets its own generated vector sneaker illustration — a brand-aware SVG engine (Swoosh, Jumpman, 3-stripes, and so on) rather than static product photos — and each listing carries an authenticity scorecard: a circular confidence score plus a checklist covering stitching, heel shape, sole texture, and box tags. With no Gemini key configured, a local simulator handles recognition and search instead, so the app is fully demoable with zero API keys.',
+    ],
+    highlights: [
+      'AI photo recognition via Gemini, with a local simulator fallback when no API key is set',
+      '963-model catalog, each with its own generated vector sneaker illustration',
+      'Authenticity scorecard: confidence score + stitching/heel/sole/box-tag checklist',
+      'Aggregates offers across marketplaces with per-seller safety tiers and price history',
+    ],
+    tags: ['React', 'Vite', 'Gemini API', 'Clerk'],
+    links: [
+      { label: 'Repository', href: 'https://github.com/yashahuja31/sho-e-p' },
+      { label: 'Live', href: 'https://sho-e-p.vercel.app/' },
+    ],
+  },
   stockai: {
     eyebrow: 'ML trading system · In testing',
     title: 'StockAI',
